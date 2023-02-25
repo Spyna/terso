@@ -1,0 +1,64 @@
+{
+  "name": "terso",
+  "author": "Lorenzo Spinelli (spyna)",
+  "description": "Dependency injection hooks for React",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spyna/terso.git"
+  },
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --passWithNoTests",
+    "prepare": "tsdx build"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "semi": true,
+    "singleQuote": false,
+    "trailingComma": "es5"
+  },
+  "module": "dist/terso.esm.js",
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^8.2.4",
+    "@types/inversify": "^2.0.33",
+    "@types/jest": "^29.4.0",
+    "@types/node": "^18.14.1",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "husky": "^8.0.3",
+    "size-limit": "^8.2.4",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17 || ^18"
+  },
+  "peerDependenciesMeta": {
+    "react-dom": {
+      "optional": true
+    },
+    "react-native": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "inversify": "^6.0.1",
+    "mobx": "^6.8.0",
+    "mobx-react-lite": "^3.4.0",
+    "reflect-metadata": "^0.1.13"
+  },
+  "gitHead": "2448dc59d6130ec57879d8a2338ce82011cdfc19"
+}
