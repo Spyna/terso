@@ -10,6 +10,7 @@ Is it a revolutionary library? No! It is just a collection of functions, born wi
 - [Terso](#terso)
   - [Quick start](#quick-start)
     - [1. Install](#1-install)
+    - [1.1 Configure typescript](#11-configure-typescript)
     - [2. Wrap your `App` in the `terso` IoC Context](#2-wrap-your-app-in-the-terso-ioc-context)
     - [3. Use a dependency in React Components](#3-use-a-dependency-in-react-components)
   - [Hooks](#hooks)
@@ -25,6 +26,17 @@ Quick start in three easy steps
 ```
 npm install terso
 # yarn add terso
+```
+
+### 1.1 Configure typescript 
+
+Add these entries in the `compilerOptions` of your typescript config 
+
+```json
+
+"experimentalDecorators": true,
+"types": ["reflect-metadata"],
+
 ```
 
 ### 2. Wrap your `App` in the `terso` IoC Context
@@ -51,6 +63,7 @@ export const TYPES = {
 };
 
 // oic.config.js
+import "reflect-metadata"
 import {TYPES} from "./ioc.types";
 //import {TodoStore } from "../stores/TodoStore"
 //import {TodoStoreImpl } from "../stores/impl/TodoStoreImpl"
@@ -184,6 +197,7 @@ const viewModel = useModel<MyViewModelType>(MyPresenterIdentifier);
 
 ```typescript
 // Todo.tsx
+import { observer } from "mobx-react-lite";
 import { Todo as TodoType } from "../../../domain/Todo";
 import { useModel } from "terso";
 import { TodoPresenter, TodoViewModel } from "../../../presenter/TodoPresenter";
@@ -192,7 +206,7 @@ interface TodoProps {
   todo: TodoType;
 }
 
-export default function Todo({ todo }: TodoProps) {
+export default observer(function Todo({ todo }: TodoProps) {
   const viewModel = useModel<TodoViewModel>(TodoPresenter);
 
   return (
@@ -203,7 +217,7 @@ export default function Todo({ todo }: TodoProps) {
       {viewModel.canDelete && <button>delete</button>}
     </li>
   );
-}
+})
 
 
 // TodoPresenter.ts

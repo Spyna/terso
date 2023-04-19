@@ -49,7 +49,7 @@
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17 || ^18",
-    "terso": "^0.0.1"
+    "terso": "^0.0.2"
   },
   "peerDependenciesMeta": {
     "react-dom": {
