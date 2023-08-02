@@ -1,4 +1,4 @@
-import { withIoc } from "./withIoc";
+import { withIoc } from "./hoc/withIoc";
 import { useInject } from "./hooks/useInject";
 import { useModel } from "./hooks/useModel";
 

@@ -3,7 +3,7 @@ import "@testing-library/jest-dom";
 import { Presenter, ViewModel, useInject, useModel, withIoc } from "../src";
 import { Container, injectable } from "inversify";
 import React from "react";
-import { reset } from "../src/withIoc";
+import { reset } from "../src/hoc/withIoc";
 
 describe("WithIoc test", () => {
   afterEach(() => {

@@ -1,7 +1,7 @@
 import { Container } from "inversify";
 import React, { Context, ReactNode } from "react";
-import { InversifyContext, IocContainerContext } from "./ioc/ContainerContext";
-import { container } from "./ioc/ioc.config";
+import { InversifyContext, IocContainerContext } from "../ioc/ContainerContext";
+import { container } from "../ioc/ioc.config";
 
 export interface ProviderProps {
   context?: Context<InversifyContext>;

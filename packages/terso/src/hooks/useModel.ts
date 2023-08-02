@@ -19,7 +19,7 @@ export function useModel<T extends ViewModel>(type: interfaces.ServiceIdentifier
       try {
         await presenter.loadViewModel();
       } catch (error) {
-        console.log("an error occurred while loading the view model", error);
+        console.log("TERSO: an error occurred while loading the view model", error);
       }
     }
     bootrstrap();
