@@ -7,7 +7,6 @@ import { Presenter, ViewModel } from "./presenter/Presenter";
 export {
   withIoc,
   useInject,
-  //presenter
   Presenter,
   ViewModel,
   useModel,
