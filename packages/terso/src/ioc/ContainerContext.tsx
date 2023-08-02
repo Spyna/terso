@@ -5,6 +5,4 @@ export interface InversifyContext {
   container: Container;
 }
 
-export const IocContainerContext = React.createContext<InversifyContext>(
-  null as any
-);
+export const IocContainerContext = React.createContext<InversifyContext>(null as any);

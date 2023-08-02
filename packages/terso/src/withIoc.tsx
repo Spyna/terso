@@ -78,6 +78,6 @@ export function withIoc(
  * reset the container and unbind all.
  */
 export function reset() {
-  container.unbindAll()
+  container.unbindAll();
   configured = false;
 }

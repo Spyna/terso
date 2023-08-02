@@ -14,7 +14,6 @@ import { useInject } from "./useInject";
 export function useModel<T extends ViewModel>(type: interfaces.ServiceIdentifier<Presenter<T>>): T {
   const presenter = useInject<Presenter<T>>(type);
 
-
   useEffect(() => {
     async function bootrstrap() {
       try {
