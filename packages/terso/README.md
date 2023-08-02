@@ -11,6 +11,7 @@ Is it a revolutionary library? No! It is just a collection of functions, born wi
   - [Quick start](#quick-start)
     - [1. Install](#1-install)
     - [1.1 Configure typescript](#11-configure-typescript)
+    - [1.2 Copy/paste qwickstart](#12-copypaste-qwickstart)
     - [2. Wrap your `App` in the `terso` IoC Context](#2-wrap-your-app-in-the-terso-ioc-context)
     - [3. Use a dependency in React Components](#3-use-a-dependency-in-react-components)
   - [Hooks](#hooks)
@@ -36,6 +37,54 @@ Add these entries in the `compilerOptions` of your typescript config
 
 "experimentalDecorators": true,
 "types": ["reflect-metadata"],
+
+```
+
+### 1.2 Copy/paste qwickstart
+
+```Typescript
+
+interface TestModel extends ViewModel {
+  value: string;
+}
+
+const value = "the value";
+
+@injectable()
+class TestPresenter implements Presenter<TestModel> {
+  loadViewModel(): Promise<void> {
+    return Promise.resolve();
+  }
+  cleanModel(): Promise<void> {
+    return Promise.resolve();
+  }
+
+  get viewModel() {
+    return {
+      value: value,
+    };
+  }
+}
+
+function App() {
+  const model = useModel<TestModel>(TestPresenter);
+  return <div>{model.value}</div>;
+}
+
+function setup(container: Container) {
+  container
+    .bind<TestPresenter>(TestPresenter)
+    .to(TestPresenter)
+    .inSingletonScope();
+}
+
+const WithIoc = withIoc(App, setup);
+
+const root = ReactDOM.createRoot(
+  document.getElementById('root')
+);
+root.render(<WithIoc />);
+
 
 ```
 
