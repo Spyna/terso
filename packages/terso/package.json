@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/spyna/terso.git"
   },
-  "version": "0.0.2",
+  "version": "0.1.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
