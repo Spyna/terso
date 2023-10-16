@@ -1,12 +1,7 @@
 import { Container } from "inversify";
-import React, { Context, ReactNode } from "react";
-import { InversifyContext, IocContainerContext } from "../ioc/ContainerContext";
+import React, { ReactNode } from "react";
+import { IocContainerContext } from "../ioc/ContainerContext";
 import { container } from "../ioc/ioc.config";
-
-export interface ProviderProps {
-  context?: Context<InversifyContext>;
-  children?: ReactNode;
-}
 
 let configured = false;
 
@@ -51,27 +46,33 @@ let configured = false;
  * }
  */
 export function withIoc(
-  WrappedComponent: React.ElementType | React.FunctionComponent<any>,
+  WrappedComponent: React.ComponentType,
   configureContainer: (container: Container) => void
-): (props: ProviderProps) => JSX.Element {
-  return function Hoc(props: ProviderProps) {
-    const configure = React.useCallback(
-      (container: Container) => configureContainer && configureContainer(container),
-      []
-    );
-
-    if (!configured) {
-      configure(container);
-      configured = true;
-    }
-    const contextValue = React.useMemo(() => ({ container: container }), []);
-
+): React.FC {
+  return function Hoc(props: any) {
     return (
-      <IocContainerContext.Provider value={contextValue}>
+      <IocProvider configureContainer={configureContainer}>
         <WrappedComponent {...props} />
-      </IocContainerContext.Provider>
+      </IocProvider>
     );
   };
+}
+
+function IocProvider({
+  children,
+  configureContainer,
+}: {
+  children: ReactNode;
+  configureContainer: (container: Container) => void;
+}) {
+  const configure = React.useCallback((container: Container) => configureContainer(container), []);
+
+  if (!configured) {
+    configure(container);
+    configured = true;
+  }
+  const contextValue = React.useMemo(() => ({ container: container }), []);
+  return <IocContainerContext.Provider value={contextValue}>{children}</IocContainerContext.Provider>;
 }
 
 /**

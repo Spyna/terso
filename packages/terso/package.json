@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/spyna/terso.git"
   },
-  "version": "0.0.3",
+  "version": "0.0.2",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -47,11 +47,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "size-limit": "^8.2.4",
-    "tsdx": "^0.14.1",
+    "tsdx": "^0.13.3",
     "tslib": "^2.5.0",
     "typescript": "^4.9.5"
-  },
-  "peerDependencies": {
   },
   "peerDependenciesMeta": {
     "react-dom": {
